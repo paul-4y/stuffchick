@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 export const Wrapper = styled.div`
@@ -35,7 +36,7 @@ export const ImageWrapper = styled.div`
     transition: all 200ms ease;
 `;
 
-export const ElementWrapper = styled.div`
+export const ElementWrapper = styled(Link)`
     display: flex;
     position: relative;
     justify-content: center;

@@ -5,7 +5,7 @@ import { ElementWrapper, ImageWrapper, InnerElement, Wrapper } from './style.mod
 const Catalogue = (props) => (
     <Wrapper>
         {props.catalogue.map((element) => (
-            <ElementWrapper key={element.id}>
+            <ElementWrapper key={element.id} to={element.url}>
                 <ImageWrapper imgUrl={element.imgUrl} />
                 <InnerElement>
                     <h3>{element.title}</h3>
