@@ -1,22 +1,41 @@
 import styled, { css } from 'styled-components';
 
-const labelStyles = css`
-    top: -10px;
-    font-size: 12px;
-    color: darkgray;
-`;
-
 export const StyledButton = styled.button`
-    display: block;
-    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: ${({ width }) => (width ? width : '100%')};
+    margin: ${({ margin }) => (margin ? margin : '0')};
     background: none;
-    background-color: white;
-    padding: 10px 10px 10px 15px;
+    background-color: ${({ bgColor }) => (bgColor ? bgColor : 'black')};
+    padding: 15px 15px;
     border: none;
     border-radius: 0;
-    border-bottom: 1px solid black;
+    border: 2px solid ${({ bgColor }) => (bgColor ? bgColor : 'black')};
+    box-sizing: border-box;
+    color: white;
+    font-size: 18px;
+    appearance: none;
+    transition: all 200ms ease;
+    outline: none;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 
-    &:focus {
-        outline: none;
+    &:hover {
+        color: ${({ bgColor }) => (bgColor ? bgColor : 'black')};
+        background-color: transparent;
     }
+
+    ${({ invert }) =>
+        invert &&
+        css`
+            color: black;
+            background-color: transparent;
+
+            &:hover {
+                color: white;
+                background-color: black;
+            }
+        `}
 `;
