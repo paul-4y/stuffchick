@@ -7,6 +7,7 @@ const APP_ROUTES = {
     CATEGORY_MENS: '/category/mens',
     CATEGORY_WOMENS: '/category/womens',
     SHOP: '/shop',
+    AUTH: '/auth',
 };
 
 export default APP_ROUTES;

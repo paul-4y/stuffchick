@@ -4,7 +4,7 @@ import styled from 'styled-components';
 export const StyledHeader = styled.div`
     display: flex;
     width: 100%;
-    justify-content: flex-end;
+    justify-content: space-between;
 `;
 
 export const LinksWrapper = styled.div`
