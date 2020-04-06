@@ -1,5 +1,13 @@
 import { Link } from 'react-router-dom';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
+
+const linkStyles = css`
+    display: flex;
+    padding: 10px 15px;
+    align-items: center;
+    font-size: 18px;
+    text-decoration: none;
+`;
 
 export const StyledHeader = styled.div`
     display: flex;
@@ -12,8 +20,10 @@ export const LinksWrapper = styled.div`
 `;
 
 export const StyledLink = styled(Link)`
-    display: flex;
-    padding: 10px 15px;
-    align-items: center;
-    font-size: 18px;
+    ${linkStyles}
+`;
+
+export const ButtonAsLink = styled.div`
+    ${linkStyles}
+    cursor: pointer;
 `;

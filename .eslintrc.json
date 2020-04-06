@@ -42,7 +42,7 @@
                     // Packages. react related packages come first.
                     ["^react", "^@?\\w"],
                     // Internal packages.
-                    ["^(@|common|features|pages|core|assets)(/.*|$)"],
+                    ["^(@|common|features|pages|core|assets|firebase)(/.*|$)"],
                     // Side effect imports.
                     ["^\\u0000"],
                     // Parent imports. Put .. last.

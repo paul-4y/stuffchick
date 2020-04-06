@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 
 import StyledButton from 'common/components/Button';
 import FormInput from 'common/components/FormInput';
+import { signInWithGoogle } from 'firebase/firebase.utils';
 
 import { Footer, Wrapper } from './style.module';
 
@@ -40,7 +41,7 @@ const SignIn = () => {
                             <StyledButton type="submit">SIGN IN</StyledButton>
                         </div>
                         <div>
-                            <StyledButton type="button" bgColor="dodgerblue">
+                            <StyledButton type="button" bgColor="dodgerblue" onClick={signInWithGoogle}>
                                 SIGN IN WITH GOOGLE
                             </StyledButton>
                         </div>
