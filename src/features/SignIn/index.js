@@ -2,18 +2,41 @@ import React, { useState } from 'react';
 
 import StyledButton from 'common/components/Button';
 import FormInput from 'common/components/FormInput';
-import { signInWithGoogle } from 'firebase/firebase.utils';
+import { auth, signInWithGoogle } from 'firebase/firebase.utils';
 
 import { Footer, Wrapper } from './style.module';
 
 const SignIn = () => {
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    console.log('SignIn -> password', password);
+    const [formData, setFormData] = useState({
+        email: '',
+        password: '',
+    });
 
-    const handleSubmit = (e) => {
+    const handleChange = (field, value) => {
+        setFormData((prevState) => ({
+            ...prevState,
+            [field]: value,
+        }));
+    };
+
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log('SignIn -> category', email, password);
+        console.log('SignUp -> formData', formData);
+        const { email, password } = formData;
+        if (!password) {
+            alert('Enter password!');
+            return;
+        }
+
+        try {
+            await auth.signInWithEmailAndPassword(email, password);
+            setFormData({
+                email: '',
+                password: '',
+            });
+        } catch (error) {
+            console.log('handleSubmit -> error', error);
+        }
     };
 
     return (
@@ -23,17 +46,17 @@ const SignIn = () => {
             <Wrapper>
                 <form action="" onSubmit={handleSubmit}>
                     <FormInput
-                        value={email}
+                        value={formData.email}
                         name="email"
                         type="email"
-                        handleOnchange={(e) => setEmail(e.currentTarget.value)}
+                        handleOnchange={(e) => handleChange('email', e.currentTarget.value)}
                         label="email"
                     />
                     <FormInput
-                        value={password}
+                        value={formData.password}
                         name="password"
                         type="password"
-                        handleOnchange={(e) => setPassword(e.currentTarget.value)}
+                        handleOnchange={(e) => handleChange('password', e.currentTarget.value)}
                         label="password"
                     />
                     <Footer>
