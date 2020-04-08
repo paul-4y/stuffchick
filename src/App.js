@@ -1,17 +1,18 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
+import { connect } from 'react-redux';
 import { Router } from 'react-router';
 import { createBrowserHistory } from 'history';
 
 import Layout from 'common/components/Layout';
 import Routes from 'core/routes';
+import { setCurrentUser } from 'core/store/user/user.actions';
 import { auth, createUserProfileDocument } from 'firebase/firebase.utils';
 
 import './App.css';
 
 const customHistory = createBrowserHistory();
 
-function App() {
-    const [currentUser, setCurrentUser] = useState(null);
+function App({ setCurrentUser }) {
     useEffect(() => {
         auth.onAuthStateChanged(async (userAuth) => {
             if (userAuth) {
@@ -27,15 +28,18 @@ function App() {
             }
         });
     }, [auth.onAuthStateChanged]);
-    console.log('App -> currentUser', currentUser);
 
     return (
         <Router history={customHistory}>
-            <Layout currentUser={currentUser}>
+            <Layout>
                 <Routes />
             </Layout>
         </Router>
     );
 }
 
-export default App;
+const mapDispatchToProps = (dispatch) => ({
+    setCurrentUser: (user) => dispatch(setCurrentUser(user)),
+});
+
+export default connect(null, mapDispatchToProps)(App);

@@ -6,7 +6,7 @@ import { StyledLayout } from './style.module';
 
 const Layout = (props) => (
     <StyledLayout>
-        <Header currentUser={props.currentUser} />
+        <Header />
         {props.children}
     </StyledLayout>
 );
