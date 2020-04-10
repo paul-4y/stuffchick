@@ -2,9 +2,10 @@ import React, { useState } from 'react';
 import { connect } from 'react-redux';
 
 import Bag from 'common/components/Cart';
+import { selectCartItemsCount } from 'core/store/cart/cart.selectors';
 import CartMenu from 'features/CartMenu';
 
-const Cart = ({ cartItems }) => {
+const Cart = ({ itemsCounter }) => {
     const [isOpen, setIsOpen] = useState(false);
 
     const triggerOpenMenu = () => {
@@ -12,8 +13,6 @@ const Cart = ({ cartItems }) => {
 
         setIsOpen((prevState) => !prevState);
     };
-
-    const itemsCounter = cartItems.reduce((accamulate, cartItem) => accamulate + cartItem.quantity, 0);
 
     return (
         <Bag handleClick={triggerOpenMenu}>
@@ -23,7 +22,7 @@ const Cart = ({ cartItems }) => {
     );
 };
 
-const mapStateToProps = ({ cart: { cartItems } }) => ({ cartItems });
+const mapStateToProps = (state) => ({ itemsCounter: selectCartItemsCount(state) });
 // const mapDispatchToProps = () => ({});
 
 export default connect(mapStateToProps, null)(Cart);

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { connect } from 'react-redux';
 
 import Button from 'common/components/Button';
+import { selectCartItems } from 'core/store/cart/cart.selectors';
 
 import { Footer, ImageWrapper, ItemWrapper, List, Wrapper } from './style.module';
 
@@ -33,7 +34,7 @@ const CartMenu = ({ cartItems }) => {
     );
 };
 
-const mapStateToProps = ({ cart: { cartItems } }) => ({ cartItems });
+const mapStateToProps = (state) => ({ cartItems: selectCartItems(state) });
 // const mapDispatchToProps = () => ({});
 
 export default connect(mapStateToProps, null)(CartMenu);
