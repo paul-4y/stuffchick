@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 
 import logo from 'common/assets/logo.png';
 import APP_ROUTES from 'core/routes/constants';
+import Cart from 'features/Cart';
 import { auth } from 'firebase/firebase.utils';
 
 import { ButtonAsLink, LinksWrapper, StyledHeader, StyledLink } from './style.module';
@@ -28,6 +29,7 @@ const Header = ({ currentUser }) => (
             ) : (
                 <StyledLink to={APP_ROUTES.AUTH}>SIGN IN</StyledLink>
             )}
+            <Cart />
         </LinksWrapper>
     </StyledHeader>
 );
